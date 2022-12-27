@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <button mat-icon-button (click)="sidenav.toggle()" onclick="this.blur()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div><a class="toolbar-title">Sidenav Content Scroll</a></div>
+</mat-toolbar>
+
+<mat-sidenav-container style="height: 100%;">
+  <mat-sidenav #sidenav role="navigation">
+    <mat-nav-list class="sidenav-list">
+      <a mat-list-item routerLink="/" (click)="sidenav.close()">
+        <mat-icon>home</mat-icon>
+        <span class="nav-caption">Home</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <cdk-virtual-scroll-viewport scrollWindow itemSize="50" style="height: 100%;">
+      <div *cdkVirtualFor="let item of items" class="example-item">
+        {{ item }}
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </mat-sidenav-content>
+</mat-sidenav-container>
